@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/searchPromptFragment">
+    <fragment
+        android:id="@+id/searchPromptFragment"
+        android:name="com.example.recipesearcher.searchPrompt.SearchPromptFragment"
+        android:label="searchPromptFragment"
+        tools:layout="@layout/search_prompt_fragment" >
+        <action
+            android:id="@+id/action_searchPromptFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.example.recipesearcher.results.ResultsFragment"
+        android:label="ResultsFragment"
+        tools:layout="@layout/results_fragment" >
+        <argument
+            android:name="userRecipeInput"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.recipesearcher.AboutFragment"
+        android:label="about_fragment"
+        tools:layout="@layout/about_fragment" />
+</navigation>

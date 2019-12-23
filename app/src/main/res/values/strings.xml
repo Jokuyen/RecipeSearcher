@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Recipe Searcher</string>
+    <string name="search_prompt">Enter an ingredient</string>
+    <string name="search_button">Search</string>
+    <string name="title">Recipe Searcher</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">About</string>
+</resources>
