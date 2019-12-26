@@ -23,6 +23,7 @@ class ResultsFragment : Fragment() {
         val binding: ResultsFragmentBinding = DataBindingUtil
             .inflate(inflater, R.layout.results_fragment, container, false)
 
+
         // Create the viewmodel
         viewModelFactory = ResultsViewModelFactory(ResultsFragmentArgs.fromBundle(arguments!!).userRecipeInput)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ResultsViewModel::class.java)

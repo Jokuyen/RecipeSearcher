@@ -2,9 +2,7 @@ package com.example.recipesearcher.network
 
 import com.squareup.moshi.Json
 
-const val baseImgUrl: String = "https://spoonacular.com/recipeImages/"
-
-data class RecipeResults(val results: List<Recipe>)
+data class RecipeResults(@Json(name = "results") val resultsList: List<Recipe>)
 
 data class Recipe(
     val id: Int,
