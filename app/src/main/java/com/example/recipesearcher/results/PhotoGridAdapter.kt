@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recipesearcher.databinding.GridViewItemBinding
 import com.example.recipesearcher.network.Recipe
 
-class PhotoGridAdapter : ListAdapter<Recipe, PhotoGridAdapter.RecipeViewHolder>(DiffCallback) {
+class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe, PhotoGridAdapter.RecipeViewHolder>(DiffCallback) {
     class RecipeViewHolder(private var binding: GridViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
@@ -32,6 +32,13 @@ class PhotoGridAdapter : ListAdapter<Recipe, PhotoGridAdapter.RecipeViewHolder>(
 
     override fun onBindViewHolder(holder: PhotoGridAdapter.RecipeViewHolder, position: Int) {
         val recipe = getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(recipe)
+        }
         holder.bind(recipe)
+    }
+
+    class OnClickListener(val clickListener: (recipe: Recipe) -> Unit) {
+        fun onClick(recipe: Recipe) = clickListener(recipe)
     }
 }

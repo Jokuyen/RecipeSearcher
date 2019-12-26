@@ -21,10 +21,21 @@
         <argument
             android:name="userRecipeInput"
             app:argType="string" />
+        <action
+            android:id="@+id/action_resultsFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.recipesearcher.AboutFragment"
         android:label="about_fragment"
         tools:layout="@layout/about_fragment" />
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.example.recipesearcher.recipeDetails.RecipeDetailsFragment"
+        android:label="RecipeDetailsFragment">
+        <argument
+            android:name="selectedRecipe"
+            app:argType="com.example.recipesearcher.network.Recipe" />
+    </fragment>
 </navigation>

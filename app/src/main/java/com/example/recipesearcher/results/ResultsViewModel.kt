@@ -29,6 +29,10 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
     val recipes: LiveData<List<Recipe>>
         get() = _recipes
 
+    private val _navigateToSelectedRecipe = MutableLiveData<Recipe>()
+    val navigateToSelectedRecipe
+        get() = _navigateToSelectedRecipe
+
     // Coroutine setup
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -56,5 +60,14 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    // Navigation to recipe's details functions
+    fun displayRecipeDetails(recipe: Recipe) {
+        _navigateToSelectedRecipe.value = recipe
+    }
+
+    fun displayRecipeDetailsComplete() {
+        _navigateToSelectedRecipe. value = null
     }
 }

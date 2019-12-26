@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.example.recipesearcher.R
 import com.example.recipesearcher.databinding.ResultsFragmentBinding
@@ -31,7 +33,18 @@ class ResultsFragment : Fragment() {
         // Data binding
         binding.resultsViewModel = viewModel
         binding.setLifecycleOwner(this)
-        binding.photosGrid.adapter = PhotoGridAdapter()
+        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.OnClickListener {
+            viewModel.displayRecipeDetails(it)
+        })
+
+        // Navigation to recipe's details screen
+        viewModel.navigateToSelectedRecipe.observe(this, Observer {
+            if ( it != null ) {
+                this.findNavController().navigate(
+                    ResultsFragmentDirections.actionResultsFragmentToRecipeDetailsFragment(it))
+                viewModel.displayRecipeDetailsComplete()
+            }
+        })
 
         return binding.root
     }
