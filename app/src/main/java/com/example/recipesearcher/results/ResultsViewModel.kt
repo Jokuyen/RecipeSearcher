@@ -23,9 +23,9 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
         get() = _apiStatus
 
     // LiveData Recipe property with internal Mutable and external LiveData
-    private val _recipe = MutableLiveData<Recipe>()
-    val recipe: LiveData<Recipe>
-        get() = _recipe
+    private val _recipes = MutableLiveData<List<Recipe>>()
+    val recipes: LiveData<List<Recipe>>
+        get() = _recipes
 
     // Coroutine setup
     private var viewModelJob = Job()
@@ -42,7 +42,7 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
             try {
                 var apiResult = getRecipesDeferred.await()
                 if (apiResult.resultsList.size > 0) {
-                    _recipe.value = apiResult.resultsList[0]
+                    _recipes.value = apiResult.resultsList
                 }
             } catch (t: Throwable) {
                 _apiStatus.value = "Failure: " + t.message

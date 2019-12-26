@@ -12,6 +12,7 @@ import retrofit2.http.*
 
 private const val BASE_URL = "https://api.spoonacular.com/"
 private val API_KEY = BuildConfig.API_KEY
+private val numberOfResults: Int = 15
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -28,6 +29,7 @@ interface ApiService {
     @GET("recipes/search")
     fun getRecipe(
         @Query("query") queryInput: String,
+        @Query("number") number: Int = numberOfResults,
         @Query("apiKey") apiKeyInput: String = API_KEY
     ): Deferred<RecipeResults>
 

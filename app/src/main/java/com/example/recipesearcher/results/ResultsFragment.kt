@@ -31,6 +31,7 @@ class ResultsFragment : Fragment() {
         // Data binding
         binding.resultsViewModel = viewModel
         binding.setLifecycleOwner(this)
+        binding.photosGrid.adapter = PhotoGridAdapter()
 
         return binding.root
     }
