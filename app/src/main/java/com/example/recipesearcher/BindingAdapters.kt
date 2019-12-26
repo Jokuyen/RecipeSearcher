@@ -1,5 +1,6 @@
 package com.example.recipesearcher
 
+import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.recipesearcher.network.Recipe
 import com.example.recipesearcher.results.PhotoGridAdapter
+import com.example.recipesearcher.results.apiStatus
 
 const val baseImgUrl: String = "https://spoonacular.com/recipeImages/"
 
@@ -31,4 +33,21 @@ fun bindImage(imgView: ImageView, imgUrlPostfix: String?) {
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Recipe>?) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(data)
+}
+
+@BindingAdapter("apiStatus")
+fun bindStatus(statusImageView: ImageView, status: apiStatus?) {
+    when (status) {
+        apiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        apiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource((R.drawable.ic_connection_error))
+        }
+        apiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
 }

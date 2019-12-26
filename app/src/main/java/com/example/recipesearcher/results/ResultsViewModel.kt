@@ -14,13 +14,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+enum class apiStatus { LOADING, ERROR, DONE }
+
 class ResultsViewModel(userRecipeInput: String) : ViewModel() {
 
     private val _userRecipeInput: String = userRecipeInput
 
-    private val _apiStatus = MutableLiveData<String>()
-    val apiStatus: LiveData<String>
-        get() = _apiStatus
+    private val _status = MutableLiveData<apiStatus>()
+    val status: LiveData<apiStatus>
+        get() = _status
 
     // LiveData Recipe property with internal Mutable and external LiveData
     private val _recipes = MutableLiveData<List<Recipe>>()
@@ -32,20 +34,21 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        _apiStatus.value = "Loading..."
         getRecipeResults()
     }
 
     private fun getRecipeResults() {
         coroutineScope.launch {
             var getRecipesDeferred = ApiServiceObject.retrofitService.getRecipe(_userRecipeInput)
+
             try {
+                _status.value = apiStatus.LOADING
                 var apiResult = getRecipesDeferred.await()
-                if (apiResult.resultsList.size > 0) {
-                    _recipes.value = apiResult.resultsList
-                }
+                _status.value = apiStatus.DONE
+                _recipes.value = apiResult.resultsList
             } catch (t: Throwable) {
-                _apiStatus.value = "Failure: " + t.message
+                _status.value = apiStatus.ERROR
+                _recipes.value = ArrayList()
             }
         }
     }
