@@ -33,6 +33,11 @@ interface ApiService {
         @Query("apiKey") apiKeyInput: String = API_KEY
     ): Deferred<RecipeResults>
 
+    @GET("recipes/{id}/ingredientWidget.json")
+    fun getIngredients(
+        @Path("id") idInput: Int,
+        @Query("apiKey") apiKeyInput: String = API_KEY
+    ) : Deferred<IngredientsResults>
 }
 
 object ApiServiceObject {

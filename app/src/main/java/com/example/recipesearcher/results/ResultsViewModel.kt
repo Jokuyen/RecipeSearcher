@@ -49,7 +49,7 @@ class ResultsViewModel(userRecipeInput: String) : ViewModel() {
                 _status.value = apiStatus.LOADING
                 var apiResult = getRecipesDeferred.await()
                 _status.value = apiStatus.DONE
-                _recipes.value = apiResult.resultsList
+                _recipes.value = apiResult.results
             } catch (t: Throwable) {
                 _status.value = apiStatus.ERROR
                 _recipes.value = ArrayList()

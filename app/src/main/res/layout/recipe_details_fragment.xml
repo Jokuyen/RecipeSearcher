@@ -31,7 +31,7 @@
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
-                android:id="@+id/property_type_text"
+                android:id="@+id/recipe_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -40,19 +40,19 @@
                 android:textSize="39sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
-                tools:text="To Rent" />
+                tools:text="Recipe Name" />
 
             <TextView
-                android:id="@+id/price_value_text"
+                android:id="@+id/ingredients_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{recipeDetailsViewModel.selectedRecipe.imgUrl}"
+                android:text="@{recipeDetailsViewModel.ingredientsList.toString()}"
                 android:textColor="#de000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/property_type_text"
-                tools:text="$100,000" />
+                app:layout_constraintTop_toBottomOf="@+id/recipe_text"
+                tools:text="Ingredients" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

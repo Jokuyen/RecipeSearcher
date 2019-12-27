@@ -16,6 +16,7 @@ class RecipeDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         val application = requireNotNull(activity).application
         val binding = RecipeDetailsFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)

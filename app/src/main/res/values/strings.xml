@@ -4,7 +4,10 @@
     <string name="search_button">Search</string>
     <string name="title">Recipe Searcher</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about">About</string>
+    <string name="about_fragment_text">Hello, John Nguyen here!
+        \n\nWelcome to my first personal Android app.
+        \n\nI created this app after taking the \"Developing Android Apps with Kotlin\" course on Udacity, which was created by Google.
+        My goal with this project was to practice what I had learned and to gain additional experience in Android development.
+        \n\nIn this app, I\'m using Spoonacular\'s API to access their database of recipes.</string>
 </resources>
