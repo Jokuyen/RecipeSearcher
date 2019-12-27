@@ -1,4 +1,4 @@
-package com.example.recipesearcher.network
+package com.jokuyen.recipesearcher.network
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

@@ -1,9 +1,9 @@
-package com.example.recipesearcher
+package com.jokuyen.recipesearcher
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.example.recipesearcher.databinding.ActivityMainBinding
+import com.jokuyen.recipesearcher.databinding.ActivityMainBinding
 
 /*
 Todo List:

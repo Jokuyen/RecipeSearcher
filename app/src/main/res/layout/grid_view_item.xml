@@ -5,7 +5,7 @@
     <data>
         <variable
             name="recipe"
-            type="com.example.recipesearcher.network.Recipe" />
+            type="com.jokuyen.recipesearcher.network.Recipe" />
     </data>
     <ImageView
         android:id="@+id/recipe_image"

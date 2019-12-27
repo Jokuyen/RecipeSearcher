@@ -1,4 +1,4 @@
-package com.example.recipesearcher
+package com.jokuyen.recipesearcher
 
 import android.view.View
 import android.widget.ImageView
@@ -7,9 +7,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.recipesearcher.network.Recipe
-import com.example.recipesearcher.results.PhotoGridAdapter
-import com.example.recipesearcher.results.apiStatus
+import com.jokuyen.recipesearcher.network.Recipe
+import com.jokuyen.recipesearcher.results.PhotoGridAdapter
+import com.jokuyen.recipesearcher.results.apiStatus
 
 const val baseImgUrl: String = "https://spoonacular.com/recipeImages/"
 

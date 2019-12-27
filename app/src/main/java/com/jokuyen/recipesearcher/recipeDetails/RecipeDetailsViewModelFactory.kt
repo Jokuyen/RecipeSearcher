@@ -1,9 +1,9 @@
-package com.example.recipesearcher.recipeDetails
+package com.jokuyen.recipesearcher.recipeDetails
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recipesearcher.network.Recipe
+import com.jokuyen.recipesearcher.network.Recipe
 
 class RecipeDetailsViewModelFactory(private val recipe: Recipe, private val application: Application
 ) : ViewModelProvider.Factory {

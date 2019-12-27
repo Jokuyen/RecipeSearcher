@@ -1,4 +1,4 @@
-package com.example.recipesearcher.searchPrompt
+package com.jokuyen.recipesearcher.searchPrompt
 
 import android.os.Bundle
 import android.view.*
@@ -8,8 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 
-import com.example.recipesearcher.R
-import com.example.recipesearcher.databinding.SearchPromptFragmentBinding
+import com.jokuyen.recipesearcher.R
+import com.jokuyen.recipesearcher.databinding.SearchPromptFragmentBinding
 
 class SearchPromptFragment : Fragment() {
 

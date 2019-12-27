@@ -1,4 +1,4 @@
-package com.example.recipesearcher.results
+package com.jokuyen.recipesearcher.results
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

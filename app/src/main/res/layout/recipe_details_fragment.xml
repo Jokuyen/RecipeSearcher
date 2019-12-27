@@ -6,7 +6,7 @@
     <data>
         <variable
             name="recipeDetailsViewModel"
-            type="com.example.recipesearcher.recipeDetails.RecipeDetailsViewModel" />
+            type="com.jokuyen.recipesearcher.recipeDetails.RecipeDetailsViewModel" />
     </data>
 
     <ScrollView

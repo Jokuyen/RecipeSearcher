@@ -1,4 +1,4 @@
-package com.example.recipesearcher.recipeDetails
+package com.jokuyen.recipesearcher.recipeDetails
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.example.recipesearcher.R
-import com.example.recipesearcher.databinding.RecipeDetailsFragmentBinding
+import com.jokuyen.recipesearcher.databinding.RecipeDetailsFragmentBinding
 
 class RecipeDetailsFragment : Fragment() {
 

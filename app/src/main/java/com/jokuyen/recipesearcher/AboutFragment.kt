@@ -1,4 +1,4 @@
-package com.example.recipesearcher
+package com.jokuyen.recipesearcher
 
 
 import android.os.Bundle

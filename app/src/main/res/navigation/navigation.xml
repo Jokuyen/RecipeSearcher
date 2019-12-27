@@ -6,7 +6,7 @@
     app:startDestination="@id/searchPromptFragment">
     <fragment
         android:id="@+id/searchPromptFragment"
-        android:name="com.example.recipesearcher.searchPrompt.SearchPromptFragment"
+        android:name="com.jokuyen.recipesearcher.searchPrompt.SearchPromptFragment"
         android:label="searchPromptFragment"
         tools:layout="@layout/search_prompt_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
-        android:name="com.example.recipesearcher.results.ResultsFragment"
+        android:name="com.jokuyen.recipesearcher.results.ResultsFragment"
         android:label="ResultsFragment"
         tools:layout="@layout/results_fragment" >
         <argument
@@ -27,15 +27,15 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.recipesearcher.AboutFragment"
+        android:name="com.jokuyen.recipesearcher.AboutFragment"
         android:label="about_fragment"
         tools:layout="@layout/about_fragment" />
     <fragment
         android:id="@+id/recipeDetailsFragment"
-        android:name="com.example.recipesearcher.recipeDetails.RecipeDetailsFragment"
+        android:name="com.jokuyen.recipesearcher.recipeDetails.RecipeDetailsFragment"
         android:label="RecipeDetailsFragment">
         <argument
             android:name="selectedRecipe"
-            app:argType="com.example.recipesearcher.network.Recipe" />
+            app:argType="com.jokuyen.recipesearcher.network.Recipe" />
     </fragment>
 </navigation>

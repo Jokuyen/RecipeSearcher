@@ -6,7 +6,7 @@
     <data>
         <variable
             name="searchPromptFragment"
-            type="com.example.recipesearcher.searchPrompt.SearchPromptFragment" />
+            type="com.jokuyen.recipesearcher.searchPrompt.SearchPromptFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

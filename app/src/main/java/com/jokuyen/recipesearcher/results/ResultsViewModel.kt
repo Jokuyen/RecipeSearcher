@@ -1,18 +1,14 @@
-package com.example.recipesearcher.results
+package com.jokuyen.recipesearcher.results
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.recipesearcher.network.ApiServiceObject
-import com.example.recipesearcher.network.Recipe
-import com.example.recipesearcher.network.RecipeResults
+import com.jokuyen.recipesearcher.network.ApiServiceObject
+import com.jokuyen.recipesearcher.network.Recipe
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 enum class apiStatus { LOADING, ERROR, DONE }
 

@@ -1,4 +1,4 @@
-package com.example.recipesearcher.results
+package com.jokuyen.recipesearcher.results
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
-import com.example.recipesearcher.R
-import com.example.recipesearcher.databinding.ResultsFragmentBinding
+import com.jokuyen.recipesearcher.R
+import com.jokuyen.recipesearcher.databinding.ResultsFragmentBinding
 
 class ResultsFragment : Fragment() {
 

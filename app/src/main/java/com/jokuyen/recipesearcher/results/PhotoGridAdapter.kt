@@ -1,12 +1,12 @@
-package com.example.recipesearcher.results
+package com.jokuyen.recipesearcher.results
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipesearcher.databinding.GridViewItemBinding
-import com.example.recipesearcher.network.Recipe
+import com.jokuyen.recipesearcher.databinding.GridViewItemBinding
+import com.jokuyen.recipesearcher.network.Recipe
 
 class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe, PhotoGridAdapter.RecipeViewHolder>(DiffCallback) {
     class RecipeViewHolder(private var binding: GridViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
