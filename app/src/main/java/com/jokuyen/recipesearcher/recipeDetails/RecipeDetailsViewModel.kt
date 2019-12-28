@@ -29,6 +29,10 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
     val ingredientsList: LiveData<List<Ingredients>>
         get() = _ingredientsList
 
+    private val _ingredientsListString = MutableLiveData<String>()
+    val ingredientsListString: LiveData<String>
+        get() = _ingredientsListString
+
     // Coroutine setup
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -47,11 +51,29 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
                 var apiResult = getIngredientsDeferred.await()
                 _status.value = apiStatus.DONE
                 _ingredientsList.value = apiResult.ingredientsResult
+                createIngredientsString()
             } catch (t: Throwable) {
                 _status.value = apiStatus.ERROR
                 //_selectedRecipe.value = null
                 Log.i("RecipeDetailsViewModel", "ERROR: $t")
             }
         }
+    }
+
+    private fun createIngredientsString() {
+        var result: String = ""
+
+        ingredientsList.value?.let {
+            for (item in it) {
+                result += "${item.name}: ${item.amount.metric.value} ${item.amount.metric.unit}\n"
+            }
+        }
+
+        _ingredientsListString.value = result
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

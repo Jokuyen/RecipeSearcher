@@ -47,12 +47,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{recipeDetailsViewModel.ingredientsList.toString()}"
+                android:text="@string/IngredientsText"
                 android:textColor="#de000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_text"
                 tools:text="Ingredients" />
+
+            <TextView
+                android:id="@+id/ingredients_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{recipeDetailsViewModel.ingredientsListString}"
+                android:textColor="#de000000"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredients_text"
+                tools:text="Ingredients List" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

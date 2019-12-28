@@ -9,5 +9,7 @@
         \n\nWelcome to my first personal Android app.
         \n\nI created this app after taking the \"Developing Android Apps with Kotlin\" course on Udacity, which was created by Google.
         My goal with this project was to practice what I had learned and to gain additional experience in Android development.
-        \n\nIn this app, I\'m using Spoonacular\'s API to access their database of recipes.</string>
+        \n\nIn this app, I\'m using Spoonacular\'s API to access their database of recipes. The link to their website can be found below:</string>
+    <string name="IngredientsText">Ingredients: </string>
+    <string name="SpoonacularAPIWebsite">https://spoonacular.com/food-api</string>
 </resources>

@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/searchPromptFragment"
         android:name="com.jokuyen.recipesearcher.searchPrompt.SearchPromptFragment"
-        android:label="searchPromptFragment"
-        tools:layout="@layout/search_prompt_fragment" >
+        android:label="Search Prompt"
+        tools:layout="@layout/search_prompt_fragment">
         <action
             android:id="@+id/action_searchPromptFragment_to_resultsFragment"
             app:destination="@id/resultsFragment" />
@@ -16,8 +16,8 @@
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.jokuyen.recipesearcher.results.ResultsFragment"
-        android:label="ResultsFragment"
-        tools:layout="@layout/results_fragment" >
+        android:label="Results"
+        tools:layout="@layout/results_fragment">
         <argument
             android:name="userRecipeInput"
             app:argType="string" />
@@ -28,12 +28,12 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.jokuyen.recipesearcher.AboutFragment"
-        android:label="about_fragment"
+        android:label="About"
         tools:layout="@layout/about_fragment" />
     <fragment
         android:id="@+id/recipeDetailsFragment"
         android:name="com.jokuyen.recipesearcher.recipeDetails.RecipeDetailsFragment"
-        android:label="RecipeDetailsFragment">
+        android:label="Recipe Details">
         <argument
             android:name="selectedRecipe"
             app:argType="com.jokuyen.recipesearcher.network.Recipe" />
