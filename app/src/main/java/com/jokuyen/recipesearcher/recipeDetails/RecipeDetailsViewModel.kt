@@ -12,6 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 
 enum class apiStatus { LOADING, ERROR, DONE }
 
@@ -64,8 +65,10 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
         var result: String = ""
 
         ingredientsList.value?.let {
+            val df: DecimalFormat = DecimalFormat("0.####")
+
             for (item in it) {
-                result += "${item.name}: ${item.amount.metric.value} ${item.amount.metric.unit}\n"
+                result += "${item.name.capitalize()}: ${df.format(item.amount.metric.value)} ${item.amount.metric.unit}\n"
             }
         }
 
