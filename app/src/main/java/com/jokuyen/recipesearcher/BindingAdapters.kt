@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jokuyen.recipesearcher.network.Recipe
-import com.jokuyen.recipesearcher.results.PhotoGridAdapter
+import com.jokuyen.recipesearcher.results.RecyclerViewAdapter
 import com.jokuyen.recipesearcher.results.apiStatus
 
 const val baseImgUrl: String = "https://spoonacular.com/recipeImages/"
@@ -31,7 +31,7 @@ fun bindImage(imgView: ImageView, imgUrlPostfix: String?) {
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Recipe>?) {
-    val adapter = recyclerView.adapter as PhotoGridAdapter
+    val adapter = recyclerView.adapter as RecyclerViewAdapter
     adapter.submitList(data)
 }
 

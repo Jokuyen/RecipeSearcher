@@ -14,13 +14,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
-enum class apiStatus { LOADING, ERROR, DONE }
-
 class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewModel(app) {
-
-    private val _status = MutableLiveData<apiStatus>()
-    val status: LiveData<apiStatus>
-        get() = _status
 
     private val _selectedRecipe = MutableLiveData<Recipe>()
     val selectedRecipe: LiveData<Recipe>
@@ -48,13 +42,10 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
             var getIngredientsDeferred = ApiServiceObject.retrofitService.getIngredients(selectedRecipe.value!!.id)
 
             try {
-                _status.value = apiStatus.LOADING
                 var apiResult = getIngredientsDeferred.await()
-                _status.value = apiStatus.DONE
                 _ingredientsList.value = apiResult.ingredientsResult
                 createIngredientsString()
             } catch (t: Throwable) {
-                _status.value = apiStatus.ERROR
                 //_selectedRecipe.value = null
                 Log.i("RecipeDetailsViewModel", "ERROR: $t")
             }

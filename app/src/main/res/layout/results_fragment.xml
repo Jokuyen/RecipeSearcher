@@ -16,20 +16,19 @@
         tools:context=".results.resultsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/photos_grid"
+            android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="6dp"
             android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:listData="@{resultsViewModel.recipes}"
             tools:itemCount="16"
-            tools:listitem="@layout/grid_view_item"/>
+            tools:listitem="@layout/recipe_view_holder"/>
 
         <ImageView
             android:id="@+id/status_image"

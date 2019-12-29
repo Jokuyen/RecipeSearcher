@@ -33,7 +33,7 @@ class ResultsFragment : Fragment() {
         // Data binding
         binding.resultsViewModel = viewModel
         binding.setLifecycleOwner(this)
-        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.OnClickListener {
+        binding.recyclerView.adapter = RecyclerViewAdapter(RecyclerViewAdapter.OnClickListener {
             viewModel.displayRecipeDetails(it)
         })
 

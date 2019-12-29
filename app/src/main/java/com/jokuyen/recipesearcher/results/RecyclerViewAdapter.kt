@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jokuyen.recipesearcher.databinding.GridViewItemBinding
+import com.jokuyen.recipesearcher.databinding.RecipeViewHolderBinding
 import com.jokuyen.recipesearcher.network.Recipe
 
-class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe, PhotoGridAdapter.RecipeViewHolder>(DiffCallback) {
-    class RecipeViewHolder(private var binding: GridViewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class RecyclerViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<Recipe, RecyclerViewAdapter.RecipeViewHolder>(DiffCallback) {
+    class RecipeViewHolder(private var binding: RecipeViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
             binding.executePendingBindings()
@@ -26,11 +26,11 @@ class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapt
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridAdapter.RecipeViewHolder {
-        return RecipeViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewAdapter.RecipeViewHolder {
+        return RecipeViewHolder(RecipeViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: PhotoGridAdapter.RecipeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerViewAdapter.RecipeViewHolder, position: Int) {
         val recipe = getItem(position)
         holder.itemView.setOnClickListener{
             onClickListener.onClick(recipe)
