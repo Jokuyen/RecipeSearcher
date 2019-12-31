@@ -16,25 +16,28 @@ data class Recipe(
     @Json(name = "image") val imgUrl: String?
 ) : Parcelable
 
-// Parsing steps for selected recipe in details screen
-data class StepsResult(val steps: List<StepsList>)
-
-data class StepsList(
-    val number: Int,
-    val step: String
-)
-
 // Parsing ingredients for selected recipe in details screen
-data class IngredientsResults(@Json(name = "ingredients") val ingredientsResult: List<Ingredients>)
+data class IngredientsResult(@Json(name = "ingredients") val ingredientsResult: List<Ingredients>)
 
 data class Ingredients(
     val amount: MeasurementSystem,
-    val name: String
+    @Json(name = "name") val ingredientName: String
 )
 
-data class MeasurementSystem(val metric: Measurement)
+data class MeasurementSystem(val metric: Measurement, val us: Measurement)
 
 data class Measurement(
     val unit: String,
     val value: Float
+)
+
+//TODO: Turns out that the API response is not an object containing a list, but it's actually a list of objects
+// Check LogCat for more info
+
+// Parsing steps for selected recipe in details screen
+data class StepsResults(val name: String, @Json(name = "steps") val stepsResult: List<Steps>)
+
+data class Steps(
+    @Json(name = "number") val stepNumber: Int,
+    @Json(name = "step") val stepInstruction: String
 )

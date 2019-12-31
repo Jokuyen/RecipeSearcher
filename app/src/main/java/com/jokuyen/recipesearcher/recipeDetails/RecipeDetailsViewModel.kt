@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.jokuyen.recipesearcher.network.ApiServiceObject
-import com.jokuyen.recipesearcher.network.Ingredients
-import com.jokuyen.recipesearcher.network.Recipe
+import com.jokuyen.recipesearcher.network.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.text.DecimalFormat
+import java.util.*
 
 class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewModel(app) {
 
@@ -20,13 +19,23 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
     val selectedRecipe: LiveData<Recipe>
         get() = _selectedRecipe
 
+    // Variables for API results
     private val _ingredientsList = MutableLiveData<List<Ingredients>>()
     val ingredientsList: LiveData<List<Ingredients>>
         get() = _ingredientsList
 
+    private val _stepsList = MutableLiveData<List<StepsResults>>()
+    val stepsList: LiveData<List<StepsResults>>
+        get() = _stepsList
+
+    // Variables for strings used in XML data binding
     private val _ingredientsListString = MutableLiveData<String>()
     val ingredientsListString: LiveData<String>
         get() = _ingredientsListString
+
+    private val _stepsListString = MutableLiveData<String>()
+    val stepsListString: LiveData<String>
+        get() = _stepsListString
 
     // Coroutine setup
     private var viewModelJob = Job()
@@ -42,9 +51,22 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
             var getIngredientsDeferred = ApiServiceObject.retrofitService.getIngredients(selectedRecipe.value!!.id)
 
             try {
-                var apiResult = getIngredientsDeferred.await()
-                _ingredientsList.value = apiResult.ingredientsResult
+                var ingredientsApiResult = getIngredientsDeferred.await()
+                _ingredientsList.value = ingredientsApiResult.ingredientsResult
                 createIngredientsString()
+            } catch (t: Throwable) {
+                //_selectedRecipe.value = null
+                Log.i("RecipeDetailsViewModel", "ERROR: $t")
+            }
+        }
+
+        coroutineScope.launch {
+            var getStepsDeferred = ApiServiceObject.retrofitService.getSteps(selectedRecipe.value!!.id)
+
+            try {
+                var stepsApiResult = getStepsDeferred.await()
+                _stepsList.value = stepsApiResult
+                createStepsString()
             } catch (t: Throwable) {
                 //_selectedRecipe.value = null
                 Log.i("RecipeDetailsViewModel", "ERROR: $t")
@@ -56,14 +78,38 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
         var result: String = ""
 
         ingredientsList.value?.let {
-            val df: DecimalFormat = DecimalFormat("0.####")
-
-            for (item in it) {
-                result += "${item.name.capitalize()}: ${df.format(item.amount.metric.value)} ${item.amount.metric.unit}\n"
+            result += it.joinToString(separator = "\n\n") {
+                "${it.ingredientName.capitalize()}\n" +
+                        "Metric: ${it.amount.metric.value} ${it.amount.metric.unit}\n" +
+                        "Imperial: ${it.amount.us.value} ${it.amount.us.unit}"
             }
         }
-
         _ingredientsListString.value = result
+    }
+
+    private fun createStepsString() {
+        var result: String = ""
+
+        stepsList.value?.let {
+            var firstStepName: Boolean = true // To avoid appending "\n\n" to the first step's name if it exist
+
+            for (element in it) {
+                if (firstStepName) {
+                    if (element.name.isNotEmpty()) {
+                        result += "${element.name}:\n\n"
+                    }
+                    firstStepName = false
+                }
+                else if (element.name.isNotEmpty()) {
+                    result += "\n\n${element.name}:\n\n"
+                }
+
+                result += element.stepsResult.joinToString(separator = "\n\n") {
+                        "${it.stepNumber}) ${it.stepInstruction}"
+                }
+            }
+        }
+        _stepsListString.value = result
     }
 
     override fun onCleared() {

@@ -11,6 +11,7 @@
         My goal with this project was to practice what I had learned and to gain additional experience in Android development.
         \n\nIn this app, I\'m using Spoonacular\'s API to access their database of recipes. The link to their website can be found below:</string>
 
-    <string name="IngredientsText">Ingredients: </string>
+    <string name="IngredientsText">Ingredients</string>
     <string name="SpoonacularAPIWebsite">https://spoonacular.com/food-api</string>
+    <string name="Steps">Steps</string>
 </resources>
