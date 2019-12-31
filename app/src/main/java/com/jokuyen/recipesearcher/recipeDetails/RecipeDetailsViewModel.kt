@@ -55,7 +55,6 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
                 _ingredientsList.value = ingredientsApiResult.ingredientsResult
                 createIngredientsString()
             } catch (t: Throwable) {
-                //_selectedRecipe.value = null
                 Log.i("RecipeDetailsViewModel", "ERROR: $t")
             }
         }
@@ -68,7 +67,6 @@ class RecipeDetailsViewModel(recipe: Recipe, app: Application) : AndroidViewMode
                 _stepsList.value = stepsApiResult
                 createStepsString()
             } catch (t: Throwable) {
-                //_selectedRecipe.value = null
                 Log.i("RecipeDetailsViewModel", "ERROR: $t")
             }
         }
