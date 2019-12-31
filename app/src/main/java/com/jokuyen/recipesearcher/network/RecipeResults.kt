@@ -31,9 +31,6 @@ data class Measurement(
     val value: Float
 )
 
-//TODO: Turns out that the API response is not an object containing a list, but it's actually a list of objects
-// Check LogCat for more info
-
 // Parsing steps for selected recipe in details screen
 data class StepsResults(val name: String, @Json(name = "steps") val stepsResult: List<Steps>)
 
